@@ -1,5 +1,7 @@
 package util.gc;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.GregorianCalendar;
 
 public class GregorianCalendarUtils {
@@ -19,5 +21,14 @@ public class GregorianCalendarUtils {
 	public static GregorianCalendar getLastDayOfMonth(GregorianCalendar gc) {
 		gc.set(GregorianCalendar.DAY_OF_MONTH, gc.getActualMaximum(GregorianCalendar.DAY_OF_MONTH));
 		return resetTime(gc);
+	}
+
+	public static LocalDateTime toLocalDateTime(GregorianCalendar gc) {
+		return gc.toZonedDateTime().toLocalDateTime();
+	}
+
+	public static GregorianCalendar fromLocalDateTime(LocalDateTime dateTime) {
+		new GregorianCalendar();
+		return GregorianCalendar.from(dateTime.atZone(ZoneId.systemDefault()));
 	}
 }
