@@ -31,12 +31,12 @@ public class GregorianCalendarUtils {
 		return GregorianCalendar.from(dateTime.atZone(ZoneId.systemDefault()));
 	}
 
-	public static GregorianCalendar getPreviewDate(GregorianCalendar gc) {
+	public static GregorianCalendar getPreviousDay(GregorianCalendar gc) {
 		gc.add(GregorianCalendar.DATE, -1);
 		return resetTime(gc);
 	}
 
-	public static GregorianCalendar getNextDate(GregorianCalendar gc) {
+	public static GregorianCalendar getNextDay(GregorianCalendar gc) {
 		gc.add(GregorianCalendar.DATE, 1);
 		return resetTime(gc);
 	}
