@@ -13,12 +13,12 @@ public class GregorianCalendarUtils {
 		return gc;
 	}
 
-	public static GregorianCalendar getFirstDayOfMonth(GregorianCalendar gc) {
+	public static GregorianCalendar getFirstDateOfMonth(GregorianCalendar gc) {
 		gc.set(GregorianCalendar.DAY_OF_MONTH, 1);
 		return resetTime(gc);
 	}
 
-	public static GregorianCalendar getLastDayOfMonth(GregorianCalendar gc) {
+	public static GregorianCalendar getLastDateOfMonth(GregorianCalendar gc) {
 		gc.set(GregorianCalendar.DAY_OF_MONTH, gc.getActualMaximum(GregorianCalendar.DAY_OF_MONTH));
 		return resetTime(gc);
 	}
@@ -28,7 +28,16 @@ public class GregorianCalendarUtils {
 	}
 
 	public static GregorianCalendar fromLocalDateTime(LocalDateTime dateTime) {
-		new GregorianCalendar();
 		return GregorianCalendar.from(dateTime.atZone(ZoneId.systemDefault()));
+	}
+
+	public static GregorianCalendar getPreviewDate(GregorianCalendar gc) {
+		gc.add(GregorianCalendar.DATE, -1);
+		return resetTime(gc);
+	}
+
+	public static GregorianCalendar getNextDate(GregorianCalendar gc) {
+		gc.add(GregorianCalendar.DATE, 1);
+		return resetTime(gc);
 	}
 }
